@@ -4,13 +4,7 @@ import java.io.DataInputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Hashtable;
-import java.util.Stack;
-import java.util.Vector;
-import java.util.Collection;
-import java.util.Collections;
+import java.util.*;
 
 import net.sf.hfst.Transducer;
 import net.sf.hfst.NoTokenizationException;
@@ -380,7 +374,7 @@ public class WeightedTransducer implements Transducer
 	    }
 	inputString.add(HfstOptimizedLookup.NO_SYMBOL_NUMBER);
 	getAnalyses(0);
-	return Collections.unmodifiableCollection(displayVector);
+	return new ArrayList<String>(displayVector);
     }
 
         private Boolean pushState(FlagDiacriticOperation flag)
