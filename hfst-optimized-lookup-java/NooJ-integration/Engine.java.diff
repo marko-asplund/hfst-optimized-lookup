@@ -1,0 +1,50 @@
+32,33d31
+< import net.sf.hfst.Transducer;
+< import net.sf.hfst.NoTokenizationException;
+93,98d90
+<         /**
+<         * Whether there's a Hfst transducer associated
+<         */
+< 
+<         public boolean hfstTransducerLoaded;
+<         private net.sf.hfst.Transducer hfstTransducer;
+257,262d248
+<                         else if (ext.equalsIgnoreCase("hfst") || ext.equalsIgnoreCase("hfstol")) {
+<                             hfstTransducer = net.sf.hfst.Transducer.load_binary(fullname);
+<                             if (hfstTransducer != null) {
+<                                 hfstTransducerLoaded = true;
+<                             }
+<                         }
+608,609d593
+<                 hfstTransducerLoaded = false;
+< 
+1159c1143
+<             else
+---
+>          else       
+1171a1156
+> 		
+1219,1237c1204
+<                     {
+<                 if (hfstTransducerLoaded) {
+<                     ArrayList<String> tmp;
+<                     try {
+<                         tmp = new ArrayList<String>(hfstTransducer.analyze(simpletoken));
+<                     } catch(NoTokenizationException e) {
+<                         System.err.println("HFST: " + e.message());
+<                         tmp = null;
+<                     }
+<                     if (tmp == null || tmp.size() == 0) {
+<                         tmp = new ArrayList<String>();
+<                         tmp.add(simpletoken + ",UNK");
+<                     }
+<                     if (sols == null) {
+<                             sols = new ArrayList<String>();
+<                     }
+<                     sols.addAll(tmp);
+<                 }
+< 
+---
+>             {  
+1286d1252
+< 

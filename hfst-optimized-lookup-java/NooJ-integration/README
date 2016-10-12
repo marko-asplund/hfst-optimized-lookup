@@ -1,0 +1,6 @@
+This directory contains patches and additional code for integrating
+hfst-optimized lookup with NooJ. The version of NooJ this patchset targets is
+v5.0.
+
+Both weighted and unweighted transducers can be read, but as NooJ makes no
+use of weights, they are discarded and have no effect on result ranking.

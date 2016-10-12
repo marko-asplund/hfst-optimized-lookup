@@ -1,0 +1,17 @@
+145,155d144
+<                                         }
+<                                         else if (ext.equalsIgnoreCase("hfst") || ext.equalsIgnoreCase("hfstol"))
+<                                         {
+< 					    CustomCell value = new CustomCell();
+< 					    value.label.setText(file);
+< 					    value.label.setSize(value.label.getPreferredSize().width, value.label.getPreferredSize().height);
+< 					    File f = new File(docDirLex + System.getProperty("file.separator") + file);
+< 					    if(f.exists()){
+< 						value.setForeground(Color.RED);
+< 					    }
+< 					    dicModel.addRow(new Object[] {value,""});
+443c432
+< }
+---
+> }
+\ No newline at end of file

@@ -1,0 +1,12 @@
+88,89d87
+<                 else if (fileExtension.equalsIgnoreCase("hfst") || fileExtension.equalsIgnoreCase("hfstol"))
+<                         ((DefaultTableModel) dialog.getTableDictionary().getModel()).addRow(new Object[] { cell, "" });
+102d99
+<                 FileNameExtensionFilter hfstFilter = null;
+108d104
+<                         hfstFilter = new FileNameExtensionFilter("HFST Transducers (*.hfst)", "hfst", "hfstol");
+123c119
+< }
+---
+> }
+\ No newline at end of file
