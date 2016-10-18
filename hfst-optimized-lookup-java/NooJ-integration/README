@@ -59,8 +59,11 @@ USING
 
 Your HFST transducer must conform to NooJ's conventions - namely, the input
 (or "upper") side is a surface token, and the output (or "lower") side is
-the base form, followed by a comma, followed by one or more analysis tags.
-If there are more than one tag, they are separated by plus signs.
+the surface token again, followed by a comma, followed optionally by a base
+form and a comma, followed by a part of speech class which must be in capital
+letters. Then there may follow a series of one or more analysis tags.
+The analysis tags may be a simple feature or a feature-value pair, separated
+by a "=". If there are more than one tag, they are separated by plus signs.
 
 For example, suppose that your morphology provides output like this:
 
@@ -75,6 +78,10 @@ pos.txt and othertags.txt, you could compile a conversion transducer like:
 etc.
 {:pos} -> {,pos} ,,
 etc.
+
+If you'd like to specify that +m signifies masculine gender, you could have
+
+{+m} -> {+gender=masculine}
 
 Compile with hfst-regexp2fst, and compose with your morphology:
 
