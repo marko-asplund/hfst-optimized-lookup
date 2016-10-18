@@ -18,6 +18,11 @@ Then, apply the following patches:
 * UpdateTablesListener.java.diff is a patch for the file
     controller/preferencesdialog/UpdateTablesListener.java in Nooj
 
+An important note: the line endings in this directory are Unix-style, eg.
+LF terminates a line. The existing NooJ codebase you get may have CRLF line
+endings, which may result in confusion. Consider converting either the patches
+or your NooJ distribution before patching.
+
 In addition, the code in net/ is all the HFST library code you'll need to
 work with NooJ - copy it into the directory where you're building NooJ.
 So the directory under "java" in NooJ should contain both
