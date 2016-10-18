@@ -4,3 +4,92 @@ v5.0.
 
 Both weighted and unweighted transducers can be read, but as NooJ makes no
 use of weights, they are discarded and have no effect on result ranking.
+
+BUILDING
+--------
+
+First, fetch the NooJ source code from MetaShare, http://www.meta-share.eu/ .
+
+Then, apply the following patches:
+
+* Engine.java.diff is a patch for the file engine/Engine.java in Nooj
+* ImportLexActionListener.java.diff is a patch for the file
+    controller/preferencesdialog/ImportLexActionListener.java in Nooj
+* UpdateTablesListener.java.diff is a patch for the file
+    controller/preferencesdialog/UpdateTablesListener.java in Nooj
+
+In addition, the code in net/ is all the HFST library code you'll need to
+work with NooJ - copy it into the directory where you're building NooJ.
+So the directory under "java" in NooJ should contain both
+
+    net/nooj4nlp
+and
+    net/sf/hfst
+
+The HFST code doesn't need external libraries, but if you're building NooJ
+for the first time, you might get error messages if some libraries are missing.
+There is no build system to detect these, but the following Debian packages
+were required in the author's case:
+
+libmiglayout-java
+libapache-poi-java
+libcommons-codec-java
+libdom4j-java
+libisorelax-java
+libjaxen-java
+libjdom1-java
+liblog4j1.2-java
+libmsv-java
+librelaxng-datatype-java
+libxmlbeans-java
+libxom-java
+libxpp2-java
+libxpp3-java
+libbcmail-java
+libbcpkix-java
+libbcprov-java
+libitext-java
+libmail-java
+libitext5-java
+libcommons-lang3-java
+libstax-java
+
+USING
+-----
+
+Your HFST transducer must conform to NooJ's conventions - namely, the input
+(or "upper") side is a surface token, and the output (or "lower") side is
+the base form, followed by a comma, followed by one or more analysis tags.
+If there are more than one tag, they are separated by plus signs.
+
+For example, suppose that your morphology provides output like this:
+
+piccolo : piccolo#ADJ:pos+m+s
+
+Every base form is followed by a #, followed by a part of speech class,
+followed by a plus-separated list of tags. Given a list of the POS classes in
+pos.txt and othertags.txt, you could compile a conversion transducer like:
+
+{#ADJ} -> {,ADJ} ,,
+{#NOUN} -> {,NOUN} ,,
+etc.
+{:pos} -> {,pos} ,,
+etc.
+
+Compile with hfst-regexp2fst, and compose with your morphology:
+
+hfst-compose -1 morphology.hfst -2 converter.hfst > result.hfst
+
+To use the result for linguistic analysis in NooJ, you'll need conversion
+to optimized-lookup format:
+
+hfst-fst2fst -O result > NooJ-compatible-morphology.hfst
+
+In NooJ, if you have loaded a text you would like to analyze, go to the
+preferences dialogue (Info -> preferences), set the language to the language
+you're working with, go to the "Lexical Analysis" tab and use the "Import"
+button to load the file you've created. Then it becomes selectable in the
+Lexical Resources pane. Finally, click "Apply". After performing linguistic
+analysis, the analyses from your morphology should appear in the Text
+Annotation Structure.
+

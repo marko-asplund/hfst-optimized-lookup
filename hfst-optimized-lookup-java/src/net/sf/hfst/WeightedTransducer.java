@@ -13,7 +13,7 @@ import net.sf.hfst.NoTokenizationException;
  * Reads the header, alphabet, index table and transition table and provides
  * interfaces to them.
  */
-public class WeightedTransducer implements Transducer
+public class WeightedTransducer extends Transducer
 {
 
     public class TransitionIndex
