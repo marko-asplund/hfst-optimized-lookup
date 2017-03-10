@@ -12,8 +12,8 @@ basic.sh: Makefile
 	@chmod +x basic.sh
 
 samibasicout: Makefile
-	@echo 'almmolaš+A+Der3+Der/vuohta+N+Sg+Nom#' > $@
-	@echo 'almmolašvuohta+N+Sg+Nom#' >> $@
+	@echo 'almmolašvuohta	almmolaš+A+Der3+Der/vuohta+N+Sg+Nom#' > $@
+	@echo 'almmolašvuohta	almmolašvuohta+N+Sg+Nom#' >> $@
 	@echo '' >> $@
 
 # in the following scripts we succeed if SAMI_TRANSDUCER doesn't exist, which it doesn't
