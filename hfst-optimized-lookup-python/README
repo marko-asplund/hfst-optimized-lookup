@@ -50,7 +50,7 @@ or
 If you load hfst_lookup as a module, you can use the class OlTransducer
 from it to load and run transducers, like so:
 
-my_transducer = Transducer(filename)
+my_transducer = OlTransducer(filename)
 for result in my_transducer.analyse(string_to_analyse):
     print result
 

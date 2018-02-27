@@ -21,8 +21,8 @@ class OlTransducer:
     def analyse(self, string):
         '''Take string to analyse, return a vector of (string, weight) pairs.
         '''
-        if transducer.analyze(string):
-            return transducer.displayVector
+        if self.transducer.analyze(string):
+            return self.transducer.displayVector
         else:
             return []
         

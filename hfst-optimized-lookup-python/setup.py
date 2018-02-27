@@ -14,7 +14,7 @@ setup(
                                    "hfst-optimized-lookup transducers."),
     license = "Apache",
     keywords = "transducer lookup hfst",
-    url = "http://hfst.sf.net",
+    url = "http://hfst.github.io",
     packages=['hfst_lookup'],
     long_description=read('README')
 )
